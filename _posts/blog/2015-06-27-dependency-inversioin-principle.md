@@ -49,7 +49,7 @@ But，怎么样组织服务之间的依赖关系是一个简单而又复杂的�
 业务功能涉及三个子系统或者模块，Copy负责调用Read Keyboard和Write Printer。代码如下：
 
 ```
-Class Keyboard
+class Keyboard
 {
   public int read(){...}
 }
@@ -59,7 +59,7 @@ class Printer
   public void write(){...}
 }
 
-Class Copy
+class Copy
 {
   private Keyboard keyBoard;
   private Printer printer;
