@@ -63,10 +63,57 @@ end
 
 Spring的校验器validation主要由Validator和DataBinder类组成；
 在介绍这两个组件之前，需要先了解BeanWrapper；BeanWrapper和DataBinder需要用PropertyEditor来解析和格式化类的属性值，
+
 spring3之后，提供了core.convert组件format更加便利的格式化UI用户输入数据.
 
-MessageCodeResolver:错误信息解析
+了解如下类的作用：
 
-BeanWrapper包裹Bean
+* BeanWrapper包裹Bean
 
+* PropertyDescriptor
+
+属性描述符，包括属性的名称、访问权限、赋值、获取值的方法.
+赋值和获取值方法的获取是通过Introspector内省类定义的默认规则判断的，如
+
+```
+static final String ADD_PREFIX = "add";
+static final String REMOVE_PREFIX = "remove";
+static final String GET_PREFIX = "get";
+static final String SET_PREFIX = "set";
+static final String IS_PREFIX = "is";
+```
+
+* Validator:校验器
+
+* ValidationUtils
+
+* Target
+
+被校验对象
+
+* Errors:校验结果
+
+插入属性名称(attribute)，错误码(message code)，描述信息
+
+* PropertyEditor:属性解析器
+
+负责字符串对象到实体对象的转换
+
+* MessageCodesResolver
+
+Strategy interface for building message codes from validation error codes.
+Used by DataBinder to build the codes list for ObjectErrors and FieldErrors
+
+错误信息解析器，根据对象名称、属性名称按照一定的策略生成错误码。例如给出对象名称
+user、属性名称name，则生成的错误码有name.user name.string name等，这时去获取错误码
+描述信息时，会依次根据错误码去查询可能的描述信息。
+
+### Spring field formatter
+
+不同于Convertor负责对象之间的转换，Formatter负责从字符串中格式化读取指定的对象和按照
+一定的格式将对象打印成字符串
+
+### Bean Validation
+
+![Bean Validation](http://beanvalidation.org/1.1/spec/)
 
