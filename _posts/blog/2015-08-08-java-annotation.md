@@ -251,3 +251,8 @@ CREATE TABLE members(
     );
 ```
 
+## 总结
+
+以上为Java Annotatoin的基本概念和使用的介绍，在现实使用中接触最多的是在有关JavaBean
+的数据完整性校验工作中注解的使用，以及Spring、Hibernate框架中注解的使用，这些后期
+文章会一一深入研究。
