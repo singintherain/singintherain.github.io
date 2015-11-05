@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Spring 校验器
-category: opinion
+category: blog
 description: 探究Spring是如何实现对象的属性校验功能的，同时对比Ruby的实现策略
 ---
 

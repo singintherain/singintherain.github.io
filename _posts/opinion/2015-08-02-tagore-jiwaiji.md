@@ -2,7 +2,7 @@
 layout: post
 title: 泰戈尔文集 集外集（第八十一首）
 description: 对艺术的赞叹，
-category: blog
+category: opinion
 ---
 
 你是我生命海岸上的曙色中一抹金黄闪光
