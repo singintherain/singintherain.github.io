@@ -117,3 +117,6 @@ user、属性名称name，则生成的错误码有name.user name.string name等�
 
 ![Bean Validation](http://beanvalidation.org/1.1/spec/)
 
+`Spring并不提供对BeanValidtion的实现，而是依赖于外部组件，如HibernateValidator`
+
+

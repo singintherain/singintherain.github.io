@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 泰戈尔文集 集外集（第八十一首）
-description: 对艺术的赞叹，
+title: 泰戈尔文集 集外集（第八十一首）对艺术的赞叹
+description: 泰戈尔的诗能给人带来无限的喜悦
 category: opinion
 ---
 
