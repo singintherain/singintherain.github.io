@@ -51,7 +51,7 @@ end
 如果想控制循环次数，则可以使用while去做，for做不到
 ```
 
-言归正传，在scala中1 to n是一个表达式，返回的是一个Range，而i <- 表达式，是指让
+言归正传，在scala中1 to n是一个表达式，返回的是一个Range，而`i <- 表达式`，是指让
 i循环遍历表达式的所有值; 另i没有val和var的类型声明，它的作用域只局限于循环体
 
 `无break和continue定义，这个略坑`
@@ -94,8 +94,14 @@ fun1(left = "<<<", str = "abc")
 * 过程
 
 函数没有=号定义时，就认为是个过程，即没有返回值，他是函数
-def fun1() : Unit = {}的简写
+def fun1() : Unit = {}的`简写`
 Unit为空类型，是void.class
+
+```
+def box(s: String) {
+    println(String)
+}
+```
 
 ## 集合
 
@@ -337,6 +343,8 @@ arr match {
 
 * 样例类
 
+case class
+
 样例类是一个特殊的类，他们经过优化被用于模式匹配;
 样例类在匹配的时候，如果匹配到指定的类型，则会将属性值绑定到变量上；
 
@@ -388,6 +396,50 @@ def receive = {
 
 被包在花括号内的一组case语句是一个偏函数，一个并非对所有输入值都有定义的函数，
 它是PartialFunction[A, B]的一个实例，A是参数类型，B是返回类型。
+
+## 注意
+
+### main方法的定义
+
+main方法必须定义在一个object中才会自动执行，定义在class中没有效果
+
+main方法可以定义在trait中，但是该train只有被object类混入才有意义
+
+### trait VS abstract class
+
+trait和abstract class类似，可以使用匿名对象，但是trait支持多继承
+
+### 变量函数
+
+无参数，无返回值的函数可以简化使用
+
+```
+object App {
+  def startUp {
+    println("app startUp")
+
+  }
+}
+trait Component {
+  val server = {
+    App.startUp
+  }
+}
+object ParamFunc {
+  def main(args: Array[String]) {
+    new Component {}.server
+  }
+}
+```
+
+### val var 数据
+
+这些数据应该是无类型的，针对无类型的对象，如果操作? 例如：
+
+val duck = fun()
+fun()函数在定义时声明的返回值类型为Duck，那么在后续的对duck的使用中，可以直接
+duck.guagua()调用吗，guagua()为Duck类的方法
+
 
 
 
