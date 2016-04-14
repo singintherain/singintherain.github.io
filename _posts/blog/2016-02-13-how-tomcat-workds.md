@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How Tomcat Workds
+title: How Tomcat Works
 description: 刨析tomcat的工作原理
 category: blog
 ---

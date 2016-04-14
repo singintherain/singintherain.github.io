@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Mysql使用
-description: 浅析Mysql使用中需要注意的事项
+title: Mysql Sharding
+description: 介绍Mysql Sharding的简单原则
 category: blog
 ---
 
@@ -29,6 +29,11 @@ atlas是360提供的数据库中间件，负责主从分离和表水平拆分工
 
 由atlas负责读写操作的分离，对调用方是透明的
 如果遇到表水平拆分问题，需要谨慎使用
+
+水平切分：数据按照一定的规则落到数据库实例上，规则有
+
+* 区间规则: 例如(key在0..100落在实例1，101..200落在实例2,...依次类推)
+* Hash规则：针对key做一致性Hash，选择候选节点
 
 
 

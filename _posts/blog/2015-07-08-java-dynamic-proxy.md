@@ -325,4 +325,6 @@ private void log(String msg) {
 InvocationHandler实现对象的invoke方法，而invoke方法把请求转发给目标对象处理；
 * CGLib生成的代理类继承于被代理对象，执行代理对象的方法时，不会转发给目标对象，
 而是执行自己的实际方法。
+* CLib没有目标对象，只有目标类，在调用proxyService方法是会实例化出来代理对象
+* JDK Proxy会先创建一个目标对象，再针对目标对象创建代理对象
 

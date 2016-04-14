@@ -37,6 +37,7 @@ three things;
 ## DataSource连接数据库
 
 ### 如何建立连接
+
 ### 连接池
 
 管理应用和数据源的之间的连接，避免无限制的创建连接和销毁连接，因为每个连接都是很
@@ -63,7 +64,40 @@ show global variables: 查看mysql server 的参数配置
 set global max_connections = 10; 设置mysql server 的最大连接数
 show processlist: 查看mysql server 的连接线程信息
 
-### 分布式事务
+### 如何处理sql执行结果
+
+如何判断sql执行成功还是失败，失败一定会抛出异常吗
+
+查询操作使用executeQuery(sql)，返回值为ResultSet
+更新操作使用execute(sql)，返回值为boolean变量
+
+如果执行失败，大多情况下都是违背了表的完整性约束，此时会抛出MySQLIntegrityConstraintViolationException
+例如，出现重复的key数据，在插入时会抛出该异常
+
+selectOne 和 selectList 的不同仅仅是 selectOne 必须返回一个对象。 如果多余一个, 或者 没有返回 (或返回了 null) 那么就会抛出异常。
+
+在ibatis把本身jdbc规定的insert update delete select抛出的SqlExecption都转换为了RuntimeException，使得所有的操作都抛出非首检异常
+这样的话，在使用中需要手动捕获特定的异常
+
+SqlSession在哪个阶段关闭的
+新建SqlSession对象-> 设置一个连接Connection -> 开启一个事务
+-> 执行操作 -> 事务提交 -> 开启多个事务 ... -> 
+
+数据库中字段定义为not null时，即使在数据库中给了default值，在做sql插入时，如果没有定义值，会抛出数据完整性异常.
+
+ibatis的insert update返回值只是标识修改的行数，insert语句操作后，会直接将生成的
+新条目的id赋给传递的对象id
+
+### Transactional
+
+@Transactional注解只是提供元数据，需要在Spring配置文件中通过指定
+<tx:annotation-driven transaction-manager="txMansger"/>
+来通知Spring容器对标注@Transactional的Bean进行加工处理@Transactional
+
+@Transactional注解可以应用于接口定义和接口方法、类定义和类的public方法上
+但Spring建议在业务类上使用@Transactional注解
+
+不能在JUnit中针对Test类使用@Transactional，因为spring对Transactional修饰的bean类创建代理类，而spring无法对Test创建代理类
 
 
 

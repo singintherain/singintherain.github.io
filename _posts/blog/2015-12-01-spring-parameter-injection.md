@@ -171,4 +171,6 @@ ref，会递归查询引用bean
 <import resource="spring-injection.xml"/>
 ```
 
+springIOC中同时import了多个id相同的bean，后面声明的bean会覆盖之前定义的bean
+
 
