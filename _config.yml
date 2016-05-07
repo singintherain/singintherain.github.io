@@ -4,6 +4,7 @@ markdown: kramdown
 pygments: true
 paginate: 8
 permalink: /:title
+highlighter: rouge
 
 title: lvsong.club
 url: http://www.lvsong.club
